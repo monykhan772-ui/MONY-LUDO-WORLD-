@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #013220, #025930);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px gold, 0 0 30px #ffcc00;
+  margin: 20px;
+}
+
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #013220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+  animation: fadeOut 2s ease 3s forwards;
+}
+
+#splash .logo {
+  font-size: 5rem;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 0 0 30px gold;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px gold; }
+  to { text-shadow: 0 0 30px #ffcc00; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 90vmin;
+  height: 90vmin;
+  border: 5px solid gold;
+  background: #004d26;
+  position: relative;
+}
+
+.cell {
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.token {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.p1 { background: red; }
+.p2 { background: blue; }
+.p3 { background: yellow; }
+.p4 { background: purple; }
+
+#dice {
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: black;
+  box-shadow: 0 0 10px #000;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#dice:active {
+  transform: rotate(20deg) scale(0.95);
+}
+
+#controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: rgba(255,215,0,0.2);
+  border: 1px solid gold;
+  color: gold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+button:hover {
+  background: gold;
+  color: #013220;
+}
+
+.snake path {
+  stroke: crimson;
+  stroke-width: 8;
+  fill: none;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px red);
+}
+
+.ladder line {
+  stroke: sienna;
+  stroke-width: 6;
+}
+
+.ladder rect {
+  fill: peru;
+}
+
+@media (max-width: 600px) {
+  .title { font-size: 1.5rem; }
+  #board { width: 95vmin; height: 95vmin; }
+}
