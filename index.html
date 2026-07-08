@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>👑 MONY GAME 👑</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snake &amp; Ladder — Premium 3D Edition</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Splash Screen -->
-  <div id="splash">
-    <div class="logo">M</div>
-    <h1>👑 MONY GAME 👑</h1>
+
+<canvas id="confettiCanvas" class="hidden"></canvas>
+
+<!-- SPLASH SCREEN -->
+<section id="splash" class="screen">
+  <div class="glow-frame">
+    <div class="snake-deco">🐍 🪜</div>
+    <h1 class="welcome-title">Welcome</h1>
+    <p class="tagline">You're about to play <b>Premium 3D Snake &amp; Ladder</b></p>
+    <button class="btn btn-start" id="goToPlayerSelect">Start ▶</button>
+  </div>
+  <div class="footer-credit">Tap the sound icon in-game to mute/unmute</div>
+</section>
+
+<!-- PLAYER SELECT SCREEN -->
+<section id="playerSelect" class="screen hidden">
+  <h2>How Many Players?</h2>
+  <p class="sub">Choose the number of players (2, 3 or 4)</p>
+  <div class="count-row">
+    <button class="count-btn" data-count="2">2<span>Players</span></button>
+    <button class="count-btn" data-count="3">3<span>Players</span></button>
+    <button class="count-btn" data-count="4">4<span>Players</span></button>
+  </div>
+  <div class="player-chip-row" id="chipRow"></div>
+  <button class="btn" id="beginGameBtn">Begin Game 🎲</button>
+</section>
+
+<!-- GAME SCREEN -->
+<section id="gameBoard" class="screen hidden">
+  <div class="top-bar">
+    <div class="title-mini">🐍 Snake &amp; Ladder</div>
+    <button class="sound-toggle" id="soundToggle">🔊 Sound: On</button>
   </div>
 
-  <!-- Title -->
-  <h1 class="title">👑 MONY GAME 👑</h1>
+  <div class="game-wrap">
+    <div class="board-stage">
+      <div class="board-frame">
+        <div class="board" id="board"></div>
+      </div>
+    </div>
 
-  <!-- Player Selection -->
-  <div id="player-select">
-    <p>Select Players:</p>
-    <button onclick="startGame(2)">2 Players</button>
-    <button onclick="startGame(3)">3 Players</button>
-    <button onclick="startGame(4)">4 Players</button>
+    <div class="side-panel">
+      <div class="turn-banner" id="turnBanner">Player 1's turn</div>
+      <div class="players-list" id="playersList"></div>
+      <div class="dice-area">
+        <div class="dice" id="dice">
+          <div class="pip" id="p1"></div><div class="pip" id="p2"></div><div class="pip" id="p3"></div>
+          <div class="pip" id="p4"></div><div class="pip" id="p5"></div><div class="pip" id="p6"></div>
+          <div class="pip" id="p7"></div><div class="pip" id="p8"></div><div class="pip" id="p9"></div>
+        </div>
+        <button class="btn roll-btn" id="rollBtn">Roll Dice 🎲</button>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Board -->
-  <div id="board">
-    <svg id="overlay" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-      <!-- Example snake -->
-      <g class="snake">
-        <path d="M 900 100 Q 800 300 600 500 Q 400 700 200 900" />
-      </g>
-      <!-- Example ladder -->
-      <g class="ladder">
-        <line x1="300" y1="900" x2="300" y2="600" />
-        <line x1="350" y1="900" x2="350" y2="600" />
-        <rect x="300" y="650" width="50" height="10" />
-        <rect x="300" y="700" width="50" height="10" />
-        <rect x="300" y="750" width="50" height="10" />
-      </g>
-    </svg>
+<!-- WIN OVERLAY -->
+<div id="winOverlay" class="hidden">
+  <div class="win-card">
+    <h2 id="winText">🏆 Player 1 Wins!</h2>
+    <p>Congratulations, champion of the board.</p>
+    <button class="btn" id="playAgainBtn">Play Again</button>
   </div>
+</div>
 
-  <!-- Dice Container -->
-  <div id="dice-container"></div>
-
-  <!-- Controls -->
-  <div id="controls">
-    <button onclick="newGame()">New Game</button>
-    <button onclick="restartGame()">Restart</button>
-    <button onclick="toggleSound()">Sound ON/OFF</button>
-  </div>
-
-  <!-- Audio -->
-  <audio id="dice-sound" src="dice.mp3"></audio>
-  <audio id="snake-sound" src="snake.mp3"></audio>
-  <audio id="ladder-sound" src="ladder.mp3"></audio>
-  <audio id="win-sound" src="win.mp3"></audio>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
