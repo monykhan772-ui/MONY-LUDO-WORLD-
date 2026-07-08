@@ -1,10 +1,10 @@
 const board = document.getElementById('board');
 const dice = document.getElementById('dice');
-let players = 2;
-let positions = [0,0,0,0];
-let currentPlayer = 0;
+let players = 2;                 // কতজন খেলোয়াড়
+let positions = [0,0,0,0];       // প্রত্যেকের অবস্থান
+let currentPlayer = 0;           // কার পালা চলছে
 
-// Build board
+// বোর্ড বানানো
 for (let i=100; i>=1; i--) {
   const cell = document.createElement('div');
   cell.className = 'cell';
@@ -12,7 +12,7 @@ for (let i=100; i>=1; i--) {
   board.appendChild(cell);
 }
 
-// Tokens
+// টোকেন বানানো
 const tokens = [];
 for (let i=0; i<players; i++) {
   const token = document.createElement('div');
@@ -35,19 +35,23 @@ dice.addEventListener('click', () => {
   }
 });
 
+// খেলোয়াড়কে সরানো
 function movePlayer(player, roll) {
   let newPos = positions[player] + roll;
   if (newPos <= 100) {
     positions[player] = newPos;
     placeToken(player);
 
+    // Ladder check
     if (ladders[newPos]) {
       setTimeout(() => {
         positions[player] = ladders[newPos];
         placeToken(player);
         alert(`Player ${player+1} climbed a ladder!`);
       }, 500);
-    } else if (snakes[newPos]) {
+    }
+    // Snake check
+    else if (snakes[newPos]) {
       setTimeout(() => {
         positions[player] = snakes[newPos];
         placeToken(player);
@@ -55,6 +59,7 @@ function movePlayer(player, roll) {
       }, 500);
     }
 
+    // Win check
     if (positions[player] === 100) {
       setTimeout(() => {
         alert(`🎉 Player ${player+1} wins! 🎉`);
@@ -63,6 +68,7 @@ function movePlayer(player, roll) {
   }
 }
 
+// টোকেনকে সঠিক cell‑এ বসানো
 function placeToken(player) {
   const cells = board.querySelectorAll('.cell');
   if (positions[player] === 0) {
@@ -74,4 +80,22 @@ function placeToken(player) {
   const rect = targetCell.getBoundingClientRect();
   const boardRect = board.getBoundingClientRect();
   tokens[player].style.left = (rect.left - boardRect.left + 10) + 'px';
-  tokens[player].style.top = (rect.top -
+  tokens[player].style.top = (rect.top - boardRect.top + 10) + 'px';
+}
+
+// নতুন গেম শুরু
+function newGame() {
+  positions = [0,0,0,0];
+  currentPlayer = 0;
+  tokens.forEach(t => { t.style.left='0px'; t.style.top='0px'; });
+}
+
+// রিস্টার্ট
+function restartGame() {
+  newGame();
+}
+
+// Sound toggle placeholder
+function toggleSound() {
+  alert("Sound toggled (placeholder)");
+}
