@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>👑 MONY GAME 👑</title>
+  <!-- CSS ফাইল লিঙ্ক -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,22 +18,7 @@
   <h1 class="title">👑 MONY GAME 👑</h1>
 
   <!-- Board -->
-  <div id="board">
-    <svg id="overlay" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-      <!-- Example snake -->
-      <g class="snake">
-        <path d="M 800 200 Q 700 400 500 600 Q 300 800 200 950" />
-      </g>
-      <!-- Example ladder -->
-      <g class="ladder">
-        <line x1="100" y1="900" x2="100" y2="600" />
-        <line x1="150" y1="900" x2="150" y2="600" />
-        <rect x="100" y="650" width="50" height="10" />
-        <rect x="100" y="700" width="50" height="10" />
-        <rect x="100" y="750" width="50" height="10" />
-      </g>
-    </svg>
-  </div>
+  <div id="board"></div>
 
   <!-- Dice -->
   <div id="dice">🎲</div>
@@ -44,6 +30,7 @@
     <button onclick="toggleSound()">Sound ON/OFF</button>
   </div>
 
+  <!-- JavaScript ফাইল লিঙ্ক -->
   <script src="script.js"></script>
 </body>
 </html>
