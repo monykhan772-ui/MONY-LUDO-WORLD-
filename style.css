@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -19,6 +20,7 @@ body {
   margin: 20px;
 }
 
+/* Splash Screen */
 #splash {
   position: fixed;
   inset: 0;
@@ -48,6 +50,7 @@ body {
   to { opacity: 0; visibility: hidden; }
 }
 
+/* Board */
 #board {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -68,6 +71,7 @@ body {
   color: #fff;
 }
 
+/* Tokens */
 .token {
   width: 20px;
   height: 20px;
@@ -81,6 +85,7 @@ body {
 .p3 { background: yellow; }
 .p4 { background: purple; }
 
+/* Dice */
 #dice {
   margin: 20px;
   width: 60px;
@@ -101,6 +106,7 @@ body {
   transform: rotate(20deg) scale(0.95);
 }
 
+/* Controls */
 #controls {
   margin-top: 20px;
   display: flex;
@@ -123,23 +129,7 @@ button:hover {
   color: #013220;
 }
 
-.snake path {
-  stroke: crimson;
-  stroke-width: 8;
-  fill: none;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 5px red);
-}
-
-.ladder line {
-  stroke: sienna;
-  stroke-width: 6;
-}
-
-.ladder rect {
-  fill: peru;
-}
-
+/* Responsive */
 @media (max-width: 600px) {
   .title { font-size: 1.5rem; }
   #board { width: 95vmin; height: 95vmin; }
